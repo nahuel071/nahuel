@@ -1,0 +1,44 @@
+
+
+<%= form_for (@producto) do |t| %>  </br> 
+<%if @producto.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@producto.errors.count, "error") %> prohibited
+      this usuario from being saved:</h2>
+><ul>
+<% @producto.errors.full_messages.each do |m| %>
+<li><%= m%></li>
+<%end%>
+</ul>
+</div>
+<%end%>
+  <p>
+    <%= t.label :nombre%><br>
+    <%= t.text_field :nombre, :required => "required"%>
+  </p>
+  
+  <p>
+    <%= t.label :descripcion %><br>
+    <%= t.text_area :descripcion, :required => "required" %>
+  </p>
+
+  <p>
+    <%= t.label :vencimiento %><br>
+    <%= t.date_field :vencimiento , :required => "required" %>
+  </p>
+
+  <p>
+    <%= t.label :imagen %><br>
+    <%= t.text_field :imagen, :required => "required"%>
+  </p>
+<%= t.label :categoria %><br>
+  <%= t.select :categoria_nombre, Categoria.all.collect { |p| [ p.nombre ] }, include_blank: true %>
+  <p>
+   
+   
+  </p>
+  <p>
+    <%= t.submit "Subastar"%>
+  </p>
+<% end %>
+

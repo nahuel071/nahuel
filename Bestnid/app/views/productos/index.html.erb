@@ -1,0 +1,40 @@
+<h1>Listing productos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Vencimiento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @Producto.all.each do |producto| %>
+      <tr>
+        <td><%= producto.nombre %></td>
+        <td><%= producto.descripcion %></td>
+        <td><%= producto.vencimiento %></td>
+        <p>
+          <strong>Nombre:</strong>
+          <%= @producto.nombre %>
+        </p>
+
+        <p>
+          <strong>Descripcion:</strong>
+          <%= @producto.descripcion %>
+        </p>
+
+        <p>
+          <strong>Vencimiento:</strong>
+          <%= @producto.vencimiento %>
+</p>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Producto', new_producto_path %>
